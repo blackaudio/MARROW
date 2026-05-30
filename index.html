@@ -33,6 +33,15 @@ button{
 </style>
 
 <h1 id="marrow">🌱</h1>
+  <img
+id="bungakuImage"
+src=""
+style="
+display:none;
+width:250px;
+margin:auto;
+border-radius:20px;
+">
 
 <button id="writeButton" onclick="grow()">今日は書いた</button>
 <button id="noWriteButton" onclick="bungaku()">今日は書かなかった</button>
@@ -133,7 +142,34 @@ document.addEventListener("DOMContentLoaded", function(){
   document.getElementById("writeButton").style.backgroundColor = "#90EE90";
   document.getElementById("writeButton").innerHTML = "書いたよ 🌱";
 }
+const bungakuEvents = [
 
+{
+ image:"IMG_6525.jpeg",
+ text:"👘 飛ぶのです～"
+},
+
+{
+ image:"IMG_6526.jpeg",
+ text:"👘 お飛びなさいませ～"
+},
+
+{
+ image:"IMG_6527.jpeg",
+ text:"👘 ほら"
+},
+
+{
+ image:"IMG_6528.jpeg",
+ text:"👘 飛べっ！！"
+},
+
+{
+ image:"IMG_6529.jpeg",
+ text:"👘 本日も崖でございます～"
+}
+
+];
 const bungakuMessages = [
 
 "👓 具体物にねじこめ",
@@ -158,16 +194,26 @@ const bungakuMessages = [
 
 function bungaku(){
 
-  let randomMessage =
-  bungakuMessages[
+  let randomEvent =
+  bungakuEvents[
     Math.floor(
-      Math.random() * bungakuMessages.length
+      Math.random() * bungakuEvents.length
     )
   ];
 
   document.getElementById("marrow").innerHTML =
-  randomMessage;
+  randomEvent.text;
 
+  document.getElementById("bungakuImage").src =
+  randomEvent.image;
+
+  document.getElementById("bungakuImage").style.display =
+  "block";
+
+}
+
+  
+  
 
 }
 </script>
