@@ -39,6 +39,11 @@ button{
 
 <script>
 let stage = 0;
+ let savedStage = localStorage.getItem("marrowStage");
+
+if(savedStage !== null){
+  stage = Number(savedStage);
+} 
 let bungakuLevel = 0;
 
 const stages = [
@@ -112,12 +117,15 @@ const stages = [
 "👑📚✨",
 
 "🛸"];
-
-function grow(){
+  
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("marrow").innerHTML = stages[stage];
+});function grow(){
   bungakuLevel = 0;
 
   if(stage < stages.length - 1){
     stage++;
+    localStorage.setItem("marrowStage", stage);
   }
 
   document.getElementById("marrow").innerHTML = stages[stage];
