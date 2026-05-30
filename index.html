@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<style>
+body{
+  background:#fff;
+  text-align:center;
+  font-family:sans-serif;
+  padding-top:80px;
+}
+
+#marrow{
+  font-size:120px;
+  line-height:1;
+  margin:40px auto;
+  display:block;
+}
+
+button{
+  font-size:28px;
+  padding:16px 28px;
+  border-radius:20px;
+  margin:8px;
+}
+</style>
+
+<h1 id="marrow">🌱</h1>
+
+<button id="writeButton" onclick="grow()">今日は書いた</button>
+<button id="noWriteButton" onclick="bungaku()">今日は書かなかった</button>
+
+<script>
+let stage = 0;
+let bungakuLevel = 0;
+
+const stages = [
+"🥔",
+"🌱",
+"🌿",
+"🍀",
+"🪴",
+"🌺",
+"🌸😆",
+"☢️",
+"☢️✨",
+"☢️✨☢️",
+"☢️✨☢️✨",
+
+"🐥",
+"🐥🥄",
+"🐥🥄🍯",
+"🐥🐤",
+"🐥🐤💕",
+"🐥📚",
+"🐥📚✨",
+
+"🌳",
+"🌳🍃",
+"🌳🍃🐗",
+"🌳🍃🐺",
+"🌳🍃🦉",
+"🌳🍃🦌",
+"🌳🍃🌳🍃",
+
+"🪴💪",
+"🪴💪😤",
+"🪴💪😤📚",
+
+"🤪",
+"🤪📚",
+"🤪📚💥",
+"🤪📚🔥",
+"🤪📚🔥🌪️",
+"🤪📚🔥🌪️🐥",
+
+"🧊",
+"🧊🐥",
+"🧊📚",
+
+"🏞️",
+"⛰️",
+"🏔️",
+"🌋",
+
+"🚀",
+"🚀🌙",
+"🚀🪐",
+"🚀🌌",
+
+"🌏",
+"🌍",
+"🌎",
+
+"👁️",
+"👁️📚",
+"👁️📚✨",
+
+"📚",
+"📚📚",
+"📚📚📚",
+
+"👑",
+"👑📚",
+"👑📚✨",
+
+"🛸"];
+
+function grow(){
+  bungakuLevel = 0;
+
+  if(stage < stages.length - 1){
+    stage++;
+  }
+
+  document.getElementById("marrow").innerHTML = stages[stage];
+
+  document.getElementById("writeButton").style.backgroundColor = "#90EE90";
+  document.getElementById("writeButton").innerHTML = "書いたよ 🌱";
+}
+
+const bungakuMessages = [
+
+"👓 具体物にねじこめ",
+"👓 呪う前に書け",
+"👓 考察を本文へ移植しろ",
+"👓 書けるから書こうとしている",
+"👓 いやなできごとはお前の養分だ",
+"👓 悩みは素材だ",
+"👓 感情は本文ではない",
+"👓 本文を書け",
+
+"👘 飛ぶのです～",
+"👘 お飛びなさいませ～",
+"👘 命綱、切って差し上げましょうか？",
+"👘 その不安はエゴでしょ？",
+"👘 笑いながら書くのです",
+"👘 崖はまだございます～",
+"👘 本日も崖でございます～",
+"👘 飛べっ！！"
+
+];
+
+function bungaku(){
+
+  let randomMessage =
+  bungakuMessages[
+    Math.floor(
+      Math.random() * bungakuMessages.length
+    )
+  ];
+
+  document.getElementById("marrow").innerHTML =
+  randomMessage;
+
+
+}
+</script>
+
+</body>
+</html>
