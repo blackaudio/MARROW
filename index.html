@@ -21,10 +21,11 @@ body{
   margin:20px auto;
 }
 
-#bungakuImage{
+#bungakuImage,
+#marouImage{
   display:none;
   width:250px;
-  margin:auto;
+  margin:20px auto;
   border-radius:20px;
 }
 
@@ -43,15 +44,17 @@ button{
 
 <div id="marrow">🌱</div>
 
-<img
-id="bungakuImage"
-src=""
->
+<img id="bungakuImage" src="">
+<img id="marouImage" src="">
 
 <br>
 
 <button id="writeButton" onclick="grow()">
 今日は書いた
+</button>
+
+<button id="chantButton" onclick="marouSmile()">
+読経／写経したよ
 </button>
 
 <button id="noWriteButton" onclick="bungaku()">
@@ -70,132 +73,41 @@ if(savedStage !== null){
 }
 
 const stages = [
-
-"🥔",
-"🌱",
-"🌿",
-"🍀",
-"🪴",
-"🌺",
-"🌸😆",
-
-"☢️",
-"☢️✨",
-"☢️✨☢️",
-"☢️✨☢️✨",
-
-"🐥",
-"🐥🥄",
-"🐥🥄🍯",
-"🐥🐤",
-"🐥🐤💕",
-"🐥📚",
-"🐥📚✨",
-
-"🌳",
-"🌳🍃",
-"🌳🍃🐗",
-"🌳🍃🐺",
-"🌳🍃🦉",
-"🌳🍃🦌",
-
-"🪴💪",
-"🪴💪😤",
-"🪴💪😤📚",
-
-"🤪",
-"🤪📚",
-"🤪📚💥",
-"🤪📚🔥",
-"🤪📚🔥🌪️",
-"🤪📚🔥🌪️🐥",
-
-"🧊",
-"🧊🐥",
-"🧊📚",
-
-"🏞️",
-"⛰️",
-"🏔️",
-"🌋",
-
-"🚀",
-"🚀🌙",
-"🚀🪐",
-"🚀🌌",
-
-"🌏",
-"🌍",
-"🌎",
-
-"👁️",
-"👁️📚",
-"👁️📚✨",
-
-"📚",
-"📚📚",
-"📚📚📚",
-
-"👑",
-"👑📚",
-"👑📚✨",
-
+"🥔","🌱","🌿","🍀","🪴","🌺","🌸😆",
+"☢️","☢️✨","☢️✨☢️","☢️✨☢️✨",
+"🐥","🐥🥄","🐥🥄🍯","🐥🐤","🐥🐤💕","🐥📚","🐥📚✨",
+"🌳","🌳🍃","🌳🍃🐗","🌳🍃🐺","🌳🍃🦉","🌳🍃🦌",
+"🪴💪","🪴💪😤","🪴💪😤📚",
+"🤪","🤪📚","🤪📚💥","🤪📚🔥","🤪📚🔥🌪️","🤪📚🔥🌪️🐥",
+"🧊","🧊🐥","🧊📚",
+"🏞️","⛰️","🏔️","🌋",
+"🚀","🚀🌙","🚀🪐","🚀🌌",
+"🌏","🌍","🌎",
+"👁️","👁️📚","👁️📚✨",
+"📚","📚📚","📚📚📚",
+"👑","👑📚","👑📚✨",
 "🛸"
-
 ];
 
 const bungakuEvents = [
+{ image:"IMG_6525.jpeg", text:"👘 飛ぶのです～" },
+{ image:"IMG_6526.jpeg", text:"👘 お飛びなさいませ～" },
+{ image:"IMG_6527.jpeg", text:"👘 ほら" },
+{ image:"IMG_6528.jpeg", text:"👘 飛べっ！！" },
+{ image:"IMG_6529.jpeg", text:"👘 本日も崖でございます～" },
+{ image:"IMG_6525.jpeg", text:"👓 具体物にねじこめ" },
+{ image:"IMG_6526.jpeg", text:"👓 呪う前に書け" },
+{ image:"IMG_6527.jpeg", text:"👓 考察を本文へ移植しろ" },
+{ image:"IMG_6528.jpeg", text:"👓 いやなできごとはお前の養分だ" },
+{ image:"IMG_6529.jpeg", text:"👓 本文を書け" }
+];
 
-{
-image:"IMG_6525.jpeg",
-text:"👘 飛ぶのです～"
-},
-
-{
-image:"IMG_6526.jpeg",
-text:"👘 お飛びなさいませ～"
-},
-
-{
-image:"IMG_6527.jpeg",
-text:"👘 ほら"
-},
-
-{
-image:"IMG_6528.jpeg",
-text:"👘 飛べっ！！"
-},
-
-{
-image:"IMG_6529.jpeg",
-text:"👘 本日も崖でございます～"
-},
-
-{
-image:"IMG_6525.jpeg",
-text:"👓 具体物にねじこめ"
-},
-
-{
-image:"IMG_6526.jpeg",
-text:"👓 呪う前に書け"
-},
-
-{
-image:"IMG_6527.jpeg",
-text:"👓 考察を本文へ移植しろ"
-},
-
-{
-image:"IMG_6528.jpeg",
-text:"👓 いやなできごとはお前の養分だ"
-},
-
-{
-image:"IMG_6529.jpeg",
-text:"👓 本文を書け"
-}
-
+const marouImages = [
+"IMG_6620.jpeg",
+"IMG_6621.jpeg",
+"IMG_6624.jpeg",
+"IMG_6623.jpeg",
+"IMG_6622.jpeg"
 ];
 
 document.addEventListener(
@@ -211,20 +123,21 @@ function(){
 function grow(){
 
   if(stage < stages.length - 1){
-
     stage++;
 
     localStorage.setItem(
       "marrowStage",
       stage
     );
-
   }
 
   document.getElementById("marrow").innerHTML =
   stages[stage];
 
   document.getElementById("bungakuImage").style.display =
+  "none";
+
+  document.getElementById("marouImage").style.display =
   "none";
 
   document.getElementById("writeButton").style.backgroundColor =
@@ -253,6 +166,39 @@ function bungaku(){
 
   document.getElementById("bungakuImage").style.display =
   "block";
+
+  document.getElementById("marouImage").style.display =
+  "none";
+
+}
+
+function marouSmile(){
+
+  let randomImage =
+  marouImages[
+    Math.floor(
+      Math.random() *
+      marouImages.length
+    )
+  ];
+
+  document.getElementById("marrow").innerHTML =
+  "🪴 まろうちゃんが喜んでる";
+
+  document.getElementById("marouImage").src =
+  randomImage;
+
+  document.getElementById("marouImage").style.display =
+  "block";
+
+  document.getElementById("bungakuImage").style.display =
+  "none";
+
+  document.getElementById("chantButton").style.backgroundColor =
+  "#FFDAB9";
+
+  document.getElementById("chantButton").innerHTML =
+  "吸収されたよ 🪴✨";
 
 }
 
